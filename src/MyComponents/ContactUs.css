@@ -1,0 +1,12 @@
+.center {
+    margin: auto;
+    width: 95%;
+    border: 5px solid rgb(119, 85, 179);
+    padding: 25px;
+  }
+  
+  .img_contact{
+    width:50%;
+    margin: auto;
+    height: 350px;
+  }

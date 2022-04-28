@@ -134,10 +134,6 @@ p{
     gap: 4px;
     padding-bottom: 10px;
   }
-.section .skill,.lang .item .point{
-  padding-bottom: 0%;
-  border-bottom: none;
-}
 
 .col1 .content{
   color: #fff;
@@ -152,6 +148,8 @@ p{
   list-style: none;
   text-align: center;
   color: #fff;
+  margin-bottom: 0%;
+  padding-bottom: 0px;
 }
 
 .certificate .content .item{
@@ -176,6 +174,8 @@ p{
   list-style: none;
   text-align: center;
   color: #fff;
+  margin-bottom: 0%;
+  padding-bottom: 0px;
 }
 
   .section .content .item:last-child {
@@ -232,8 +232,7 @@ p{
     width: 14px;
   }
   
-  .content .points,
-  .numbered {
+  .content .points,.numbered {
     padding-left: 18px;
     font-size: 0.875rem;
   }

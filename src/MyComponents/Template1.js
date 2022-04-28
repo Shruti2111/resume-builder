@@ -168,8 +168,8 @@ const Template1 = forwardRef((props,ref) => {
       <div className="item">
         {
           item.language && 
-        <ul className="points">
-          <li className="point">{item.language}</li>
+        <ul className="point">
+          <li className="point1">{item.language}</li>
         </ul>
         }
       </div>

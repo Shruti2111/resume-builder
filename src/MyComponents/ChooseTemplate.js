@@ -15,17 +15,20 @@ function ChooseTemplate(){
 </div>
       <div className='wrapper'>
         <Card
-              src={img1}
+              src={img2}
+              c_id="temp1"
               alt= "template1"
               title="Classic"
               description="Template 1"/> 
         <Card
-              src={img2}
+              src={img1}
+              c_id="temp2"
               alt= "template2"
               title="Professional"
               description="Template 2"/>
         <Card
               src={img3}
+              c_id="temp3"
               alt= "template3"
               title="Popup"
               description="Template 3"/>
@@ -35,8 +38,13 @@ function ChooseTemplate(){
 }
 
 function Card(props){
+  
+  const navigate = useNavigate();
+  
+  const toresume = ()=>{
+    navigate("/createresume",{ state: {cid: props.c_id}});
+  }
 
-  let navigate = useNavigate();
   return(
     <div className='card'>
       <div className='card_body'>
@@ -44,7 +52,7 @@ function Card(props){
         <h2 className='title'>{props.title}</h2>
         <p className='description'>{props.description}</p>
       </div>
-      <button className='btn' onClick={ () => navigate("/createresume")}>Generate Resume</button>
+      <button className='btn' onClick={ () => {toresume()}}>Generate Resume</button>
     </div>
   )
 }

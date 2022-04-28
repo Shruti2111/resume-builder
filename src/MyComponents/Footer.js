@@ -1,60 +1,60 @@
 import React from 'react';
 import './Footer.css';
 
-function Footer(){
-    return(
-        <footer>
-        <div className="container">
+
+
+function Footer() {
+  
+
+
+    return (
+      
+
+      <div className="main-footer">
+        
+
+        <div className="con">
           <div className="row">
-            <div className="col-12 col-lg-10 mx-auto">
-              <div className="row">
-                <div className="col-6 col-lg-3">
-                  <h2>MakeMyResume</h2>
-                  <ul>
-                  <li>
-                      <a href="#">Home</a>
-                    </li>
-                    <li>
-                      <a href="#">Create Resume</a>
-                    </li>
-                    <li>
-                      <a href="#">About Us</a>
-                    </li>
-                    <li>
-                      <a href="#">Contact Us</a>
-                    </li>
-                    
-                  </ul>
-                </div>
-
-                <div className="col-6 col-lg-3">
-                  <h2>Contact</h2>
-                  <ul>
-                    <li>
-                      <a href="#">Write to Us</a>
-                    </li>
-                    <li>
-                      <a href="#">Email</a>
-                    </li>
-                    
-                  </ul>
-                </div>
-
+            {/* Column1 */}
+            <div className="col">
+              <h2>BuildMyResume</h2>
+              <h5 className="list-unstyled">
                 
-
-                
-              </div>
-              <hr />
-              <div className="mt-5">
-                <p className="main-hero-para text-center w-100">
-                  Copyright @ 2022 MakeMyResume. All rights reserved.
-                </p>
-              </div>
+                <li>Create a professional looking resume in just few minutes.</li>
+                <li>It is completely free.</li>
+              </h5>
+            </div>
+            {/* Column2 */}
+            <div className="col">
+              <h5><a class="nav-link active footer-link" aria-current="page" href="http://localhost:3000/header">Home</a></h5>
+              <ui className="list-unstyled">
+                <li><a class="nav-link footer-link" href="http://localhost:3000/createresume">Create Resume</a></li>
+                <li><a class="nav-link footer-link" href="http://localhost:3000/choosetemplate">Choose Template</a></li>
+                <li><a class="nav-link footer-link" href="http://localhost:3000/resumeexamples">Resume Examples</a></li>
+              </ui>
+            </div>
+            {/* Column3 */}
+            <div className="col">
+              <h5><a class="nav-link footer-link" href="http://localhost:3000/contactus">Contact Us</a></h5>
+              <ui className="list-unstyled">
+                <li>
+                <a class="nav-link footer-link" href="http://localhost:3000/aboutus">About Us</a>
+                </li>
+                <li><a class="nav-link footer-link" href="http://localhost:3000/faq">FAQ</a></li>
+                <li><a class="nav-link footer-link" href="http://localhost:3000/contactus">Feedback</a></li>
+              </ui>
             </div>
           </div>
+          <hr />
+          <div className="row">
+            <p className="col-sm">
+              &copy;{new Date().getFullYear()} BuildMyResume | All rights reserved |
+              Terms Of Service | Privacy
+            </p>
+          </div>
         </div>
-      </footer>
-    )
-}
+      </div>
+    );
+  }
 
 export default Footer;

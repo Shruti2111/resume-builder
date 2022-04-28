@@ -6,12 +6,13 @@ import Template3 from './Template3';
 import Template1 from './Template1';
 import ReactToPrint from 'react-to-print';
 import axios from "axios"
-import { useNavigate } from "react-router-dom"
+import { useLocation } from "react-router-dom"
 
 function CreateResume(){
 
-    let navigate = useNavigate();
-
+    let location = useLocation();
+    const idd = location.state.cid;
+    console.log(location);
     const sections ={
         basicInfo: "Basic Info",
         education: "Education",
@@ -75,6 +76,12 @@ function CreateResume(){
 
     });
 
+    // const template = (idd) =>( {
+    //     'temp1': 'Template1',
+    //     'temp2': 'Template2',
+    //     'temp3': 'Template3',
+    // })[idd]
+
     useEffect(() => {
         console.log(resumeInformation);
     },[resumeInformation]);
@@ -92,19 +99,33 @@ function CreateResume(){
           content={() => resumeRef.current}   
           />  
            </div> 
+           {/* <div>{location.state.cid}</div> */}
         <div className="main"> 
+
            <Details sections={sections} 
                     information={resumeInformation}
                     setInformation={setResumeInformation} />
-        
-          <Template3 
-                     ref={resumeRef}
-                     sections={sections}
-                     information={resumeInformation}/>     
-                     <Template1 
-                     ref={resumeRef}
-                     sections={sections}
-                     information={resumeInformation}/>            
+    
+          {location.state.cid === 'temp1' ?
+                (<Template1
+                ref={resumeRef}
+                sections={sections}
+                information={resumeInformation}/>) :
+                   location.state.cid === 'temp2' ?  
+                   (<Template1
+                    ref={resumeRef}
+                    sections={sections}
+                    information={resumeInformation}/>): 
+                       location.state.cid === 'temp3' ?  
+                       (<Template3
+                        ref={resumeRef}
+                        sections={sections}
+                        information={resumeInformation}/>):
+                           console.log("wrong")}
+            {/* <{template(idd)}
+                    ref={resumeRef}
+                    sections={sections}
+                    information={resumeInformation}/> */}
        </div>
        </div>
     )

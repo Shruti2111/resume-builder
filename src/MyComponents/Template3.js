@@ -168,8 +168,8 @@ const Template3 = forwardRef((props,ref) => {
       <div className="item">
         {
           item.language && 
-        <ul className="points">
-          <li className="point">{item.language}</li>
+        <ul className="point">
+          <li className="point1">{item.language}</li>
         </ul>
         }
       </div>
@@ -231,7 +231,7 @@ const Template3 = forwardRef((props,ref) => {
 
   return (
     <div ref={ref}>
-    <div  className="container">
+    <div  className="container11">
       
           <div className="main1">
         <div className="coll1">
@@ -288,7 +288,9 @@ const Template3 = forwardRef((props,ref) => {
           {column[1].map((item) =>sectionDiv[item])}
         </div>
       </div>
+<div className="bottomline">
 
+</div>
     </div>
     </div>
   );

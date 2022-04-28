@@ -5,6 +5,7 @@ import ChooseTemplate from './ChooseTemplate';
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import Faq from './Faq';
+import ResumeExamplesHome from './ResumeExamplesHome';
 
 
 export default function Header(){
@@ -16,7 +17,7 @@ export default function Header(){
         <div className='resume-container'>
             <div className='resume-parent'>
                 <div className='resume-details'>
-                    <div className='colz'>
+                    {/* <div className='colz'>
                     <div className='colz-icon'>
                         <a href='https://www.facebook.com/?msclkid=8d231b88af4b11ec970c27489b34251b'>
                             <i className='fa fa-facebook-square'></i>
@@ -31,7 +32,7 @@ export default function Header(){
                             <i className='fa fa-linkedin-square'></i>
                         </a>
                     </div>
-                    </div>
+                    </div> */}
                  
                 <div className='resume-details-name'>
                     <span className='primary-text'>
@@ -86,6 +87,8 @@ export default function Header(){
             
       
          </div>
+         <ChooseTemplate />
+         <ResumeExamplesHome />
          <Faq />
          </div>
          

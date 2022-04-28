@@ -112,7 +112,7 @@ function Details(props){
                    label="Linkedin Link"
                    placeholder="Enter your linkedin profile link"
                    value={values.linkedin}
-                   name="linkdin"
+                   name="linkedin"
                    onChange={(event)=>
                     setValues((prev) => ({...prev, linkedin: event.target.value}))
                  }
@@ -485,7 +485,7 @@ function Details(props){
                        sectionTitle,
                    }
                }));
-              
+      
               axios.post("http://localhost:9002/details", tempDetails);
                break;
 
@@ -509,7 +509,7 @@ function Details(props){
                     sectionTitle,
                 }
             }));
-            //axios.post("http://localhost:9002/details", sectionTitle,tempDetails);
+             axios.post("http://localhost:9002/details", tempDetails);
             break;
         }
 
@@ -534,7 +534,7 @@ function Details(props){
                     sectionTitle,
                 }
             }));
-            //axios.post("http://localhost:9002/details", sectionTitle,tempDetails);
+             axios.post("http://localhost:9002/details",tempDetails);
             break;
         }
 
@@ -552,7 +552,7 @@ function Details(props){
                     sectionTitle,
                 }
             }));
-           // axios.post("http://localhost:9002/details", sectionTitle,tempDetails);
+            axios.post("http://localhost:9002/details",tempDetails);
             break;
         }
 
@@ -575,7 +575,7 @@ function Details(props){
                     sectionTitle,
                 }
             }));
-          //  axios.post("http://localhost:9002/details", sectionTitle,tempDetails);
+            axios.post("http://localhost:9002/details",tempDetails);
             break;
         }
 
@@ -589,7 +589,7 @@ function Details(props){
                     sectionTitle,
                 }
             }));
-       //     axios.post("http://localhost:9002/details", sectionTitle,tempPoints);
+            axios.post("http://localhost:9002/details",tempPoints);
             break;
         }
 
@@ -609,7 +609,7 @@ function Details(props){
                     sectionTitle,
                 }
             }));
-         //   axios.post("http://localhost:9002/details", sectionTitle,tempDetails);
+            axios.post("http://localhost:9002/details",tempDetails);
             break;
         }
 
@@ -628,7 +628,7 @@ function Details(props){
                     sectionTitle,
                 }
             }));
-           //axios.post("http://localhost:9002/details", sectionTitle,tempDetails);
+            axios.post("http://localhost:9002/details",tempDetails);
             break;
         }
 
@@ -646,20 +646,19 @@ function Details(props){
                 }
             }));
            
-            const formdata = new FormData();
+        /*    const formdata = new FormData();
             formdata.append('avatar', values.file);
             axios.post("http://localhost:9002/details", formdata,{
                 headers:{"Content-Type": "multipart/form-data"}
             })
             .then(res => {
                 console.warn(res);
-            })
+            })*/
             break;
         }
        } 
        
        /*
-      
        const config = {
            headers: {
                "Content-Type" : "application/json",

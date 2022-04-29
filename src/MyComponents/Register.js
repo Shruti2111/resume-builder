@@ -51,7 +51,6 @@ const Register = () => {
                 type ="text" 
                 name="name" 
                 label="Username"
-                errorMessage="*Username should be 3-16 characters!"
                 value={user.name} 
                 placeholder="Enter your Name" 
                 onChange={ handleChange }>
@@ -60,7 +59,6 @@ const Register = () => {
                 type ="text" 
                 name="email" 
                 label="Email"
-                errorMessage="*Invalid Email!"
                 value={user.email}  
                 placeholder="Enter your Email" 
                 onChange={ handleChange }>
@@ -77,7 +75,6 @@ const Register = () => {
                 type ="password" 
                 label="Confirm Password"
                 name="reEnterPassword"
-                errorMessage="*Password doesn't match!" 
                 value={user.reEnterPassword}  
                 placeholder="Re-enter Password" 
                 onChange={ handleChange }>

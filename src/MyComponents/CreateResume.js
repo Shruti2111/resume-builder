@@ -83,6 +83,7 @@ function CreateResume(){
     // })[idd]
 
     useEffect(() => {
+     
         console.log(resumeInformation);
     },[resumeInformation]);
 
@@ -112,7 +113,7 @@ function CreateResume(){
                 sections={sections}
                 information={resumeInformation}/>) :
                    location.state.cid === 'temp2' ?  
-                   (<Template1
+                   (<Template2
                     ref={resumeRef}
                     sections={sections}
                     information={resumeInformation}/>): 
@@ -121,7 +122,10 @@ function CreateResume(){
                         ref={resumeRef}
                         sections={sections}
                         information={resumeInformation}/>):
-                           console.log("wrong")}
+                        <Template1
+                        ref={resumeRef}
+                        sections={sections}
+                        information={resumeInformation}/>}
             {/* <{template(idd)}
                     ref={resumeRef}
                     sections={sections}

@@ -42,11 +42,11 @@ const Template2 = forwardRef((props,ref) => {
       }
       {
         item.companyName &&
-        <p className="subTitle">{item.companyName}</p>
+        <p className="subTitle2">{item.companyName}</p>
       }
       {
         item.certificate &&
-        <a className="link" href={item.certificate}>
+        <a className="link2" href={item.certificate}>
           <i class="fa-solid fa-paperclip"></i>{item.certificate}</a>
       }
       {
@@ -90,13 +90,13 @@ const Template2 = forwardRef((props,ref) => {
         <p className="overview">{item.overview}</p>
       }
           {
-        item.link &&
-        <a className="link" href={item.link}>
-          <i class="fa-solid fa-paperclip"></i>{item.link}</a>
+        item.link2 &&
+        <a className="link2" href={item.link2}>
+          <i class="fa-solid fa-paperclip"></i>{item.link2}</a>
       }
            {
               item.github &&     
-            <a className="link" href={item.github}>
+            <a className="link2" href={item.github}>
             <i class="fa-brands fa-github" />  {item.github} </a>
             }
           {
@@ -124,7 +124,7 @@ const Template2 = forwardRef((props,ref) => {
       }
          {
         item.classCollege &&
-        <p className="subTitle">{item.classCollege}</p>
+        <p className="subTitle2">{item.classCollege}</p>
       }
         {
         item.startDate && item.endDate ?(
@@ -143,44 +143,6 @@ const Template2 = forwardRef((props,ref) => {
     </div>
   </div>,
 
-  [sections.basicInfo]:
-  <div key={"basicInfo"} className={`${"section contact"} $(info.basicInfo?.sectionTitle ? "": "hidden")`} >
-    <div className="sectionTitle">{info.basicInfo?.sectionTitle}</div>
-    <div className="content">
-    {info.basicInfo?.detail?.map((item) => (
-      <div className="links1">
-        {
-          item.email &&
-          <a className="link" type="email" href={item.email}> <i class="fa-solid fa-envelope" />
-            {item.email}</a>
-        }
-        {
-          item.address &&
-          <p className="link"><i class="fa-solid fa-location-dot" />
-            {item.address}</p>
-        }
-        {
-          item.phone &&
-          <p className="link">
-            <i class="fa-solid fa-phone"></i>
-            {item.phone}</p>
-        }
-
-        {
-          item.linkedin &&
-          <a className="link" href={item.linkedin}><i class="fa-brands fa-linkedin" />
-            {item.linkedin}</a>
-        }
-        {
-          item.github &&
-          <a className="link" href={item.github}><i class="fa-brands fa-github" />
-            {item.github}</a>
-        }
-      </div>
-    ))}
-    </div>
-  </div>,
-
     [sections.skills]:
     <div key={"skill"} className={`${"section skill"} $(info.skills?.sectionTitle ? "": "hidden")`}>
     <div className="sectionTitle">{info.skills?.sectionTitle}</div>
@@ -189,8 +151,8 @@ const Template2 = forwardRef((props,ref) => {
       <div className="item">
        {
           item.skill && 
-        <ul className="points">
-          <li className="point">{item.skill}</li>
+        <ul className="point">
+          <li className="point1">{item.skill}</li>
         </ul>
         }
       </div>
@@ -226,9 +188,9 @@ const Template2 = forwardRef((props,ref) => {
         <p className="overview">{item.description}</p>
       }
       {
-        item.certificateLink &&
-        <a className="link" href={item.certificateLink}>
-          <i class="fa-solid fa-paperclip"></i>{item.certificateLink}</a>
+        item.certificatelink2 &&
+        <a className="link2" href={item.certificatelink2}>
+          <i class="fa-solid fa-paperclip"></i>{item.certificatelink2}</a>
       }
       </div>
     ))}
@@ -253,26 +215,35 @@ const Template2 = forwardRef((props,ref) => {
   useEffect(() => {
     setColumn([
       [
+        sections.education,
         sections.skills,
         sections.lang,
-        sections.achievements,
-        sections.certificate,
+        
       ], [
-        sections.basicInfo,
-        sections.education,
+        
         sections.workExp,
         sections.project,
+        sections.certificate,
+        sections.achievements,
+        
+      
       ]
     ])
   });
 
   return (
     <div ref={ref}>
-    <div className="container">
+    <div  className="container22">
       <div className="main1">
-   
-        <div className="column1">
-        <div className="header1">
+        <div className="col11">
+          <img src={User_Template1} alt="user" className="temp1_img" id="imgTemplate"/>  
+          
+
+          {column[0].map((item) =>sectionDiv[item])}
+        </div>
+
+        <div className="col22 temp2">
+          <div className="header1">
             {
                info.basicInfo?.detail?.fname && info.basicInfo?.detail?.lname ? (
                 <div className="heading1">
@@ -282,42 +253,35 @@ const Template2 = forwardRef((props,ref) => {
             
             {
               info.basicInfo?.detail?.title && 
-              <div className="subHeading">{info.basicInfo?.detail?.title}</div>
+              <div className="subHeading11">{info.basicInfo?.detail?.title}</div>
             }
             
           </div>
-
-          <img src={User_Template1} alt="user2" className="temp2_img"/>  
-          
-          {column[0].map((item) =>sectionDiv[item])}
-        </div>
-
-        <div className="column2">
-        <div className="links1">
+          <div className="links2">
             {
              info.basicInfo?.detail?.email && 
-                <a className="link" type="email">
+                <a className="link2" type="email">
                   <i class="fa-solid fa-envelope" />
                    {info.basicInfo?.detail?.email}</a> 
             }
             {
                info.basicInfo?.detail?.address && 
-              <p className="link">
+              <p className="link2">
               <i class="fa-solid fa-location-dot" />  {info.basicInfo?.detail?.address} </p>
             }
             {
                info.basicInfo?.detail?.phone && 
-               <p className="link" type="tel" >
+               <p className="link2" type="tel" >
                <i class="fa-solid fa-phone"></i>  {info.basicInfo?.detail?.phone}</p>
             }
             {
                info.basicInfo?.detail?.linkedin && 
-              <a className="link">
+              <a className="link2">
               <i class="fa-brands fa-linkedin" />  {info.basicInfo?.detail?.linkedin} </a>
             }
             {
               info.basicInfo?.detail?.github &&     
-            <a className="link">
+            <a className="link2">
             <i class="fa-brands fa-github" />  {info.basicInfo?.detail?.github}</a>
             }
           </div>
@@ -329,7 +293,5 @@ const Template2 = forwardRef((props,ref) => {
     </div>
   );
 });
-
-/**/
 
 export default Template2;

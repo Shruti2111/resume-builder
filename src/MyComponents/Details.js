@@ -476,7 +476,26 @@ function Details(props){
                    title:values.title, 
                    address:values.address,
                };
+               axios.post("http://localhost:9002/details", tempDetails)
                
+            // fetch("/details",{
+            //     method:"post",
+            //     headers:{
+            //         "Content-Type":"application/json"
+            //     },
+            //     body:JSON.stringify({
+            //         fname,lname,linkedin,github,email,phone,title,address
+            //     })
+            // }).then(res=>res.json())
+            // .then(data=>{
+            //     if(data.error){
+            //         res.send(data.error)
+            //     }
+            //     else{
+            //         res.send(data.message)
+            //     }
+            // })
+        
                props.setInformation((prev) => ({
                    ...prev,
                    [sections.basicInfo]: {
@@ -486,7 +505,10 @@ function Details(props){
                    }
                }));
       
-              axios.post("http://localhost:9002/details", tempDetails);
+             
+            //   .then( res => {
+            //     alert(res.data.message)
+            //    })  
                break;
 
            }
@@ -509,7 +531,8 @@ function Details(props){
                     sectionTitle,
                 }
             }));
-             axios.post("http://localhost:9002/details", tempDetails);
+             axios.post("http://localhost:9002/details", tempDetails)
+          
             break;
         }
 
@@ -534,7 +557,8 @@ function Details(props){
                     sectionTitle,
                 }
             }));
-             axios.post("http://localhost:9002/details",tempDetails);
+             axios.post("http://localhost:9002/details",tempDetails)
+          
             break;
         }
 
@@ -552,7 +576,8 @@ function Details(props){
                     sectionTitle,
                 }
             }));
-            axios.post("http://localhost:9002/details",tempDetails);
+            axios.post("http://localhost:9002/details",tempDetails)
+       
             break;
         }
 
@@ -575,7 +600,8 @@ function Details(props){
                     sectionTitle,
                 }
             }));
-            axios.post("http://localhost:9002/details",tempDetails);
+            axios.post("http://localhost:9002/details",tempDetails)
+          
             break;
         }
 
@@ -589,7 +615,8 @@ function Details(props){
                     sectionTitle,
                 }
             }));
-            axios.post("http://localhost:9002/details",tempPoints);
+            axios.post("http://localhost:9002/details",tempPoints)
+          
             break;
         }
 
@@ -609,7 +636,8 @@ function Details(props){
                     sectionTitle,
                 }
             }));
-            axios.post("http://localhost:9002/details",tempDetails);
+            axios.post("http://localhost:9002/details",tempDetails)
+         
             break;
         }
 
@@ -628,7 +656,8 @@ function Details(props){
                     sectionTitle,
                 }
             }));
-            axios.post("http://localhost:9002/details",tempDetails);
+            axios.post("http://localhost:9002/details",tempDetails)
+          
             break;
         }
 
@@ -708,6 +737,16 @@ function Details(props){
         })); 
         setActiveDetailIndex((prev => (prev===index ? 0: prev-1)));
     };
+
+    useEffect(() => {
+        fetch('/alldetail',{
+            headers:{"Authorization": "Bearer "+localStorage.getItem("jwt")
+        }
+        }).then(res =>res.json())
+        .then(result =>{
+            setValues(result)
+        })
+    })
    
     useEffect(()=>{
         const activeInfo = information[sections[activeSectionKey]];
@@ -739,6 +778,7 @@ function Details(props){
         startDate: activeInfo?.details ? activeInfo.details[0]?.startDate || "" : "",
         endDate: activeInfo?.details ? activeInfo.details[0]?.endDate || "" : "",
         college: activeInfo?.details ? activeInfo.details[0]?.college || "" : "",
+        // skill:values.skill,
         skill: activeInfo?.details ? activeInfo.details[0]?.skill || "" : "",
         language: activeInfo?.details ? activeInfo.details[0]?.language || "" : "",
         marks: activeInfo?.details ? activeInfo.details[0]?.marks || "" : "",
@@ -749,6 +789,7 @@ function Details(props){
 
     useEffect(() => {
         setActiveInformation(information[sections[activeSectionKey]]);
+      
     }, [information]);
 
     useEffect(() => {
@@ -769,7 +810,8 @@ function Details(props){
         startDate:  activeInfo.details[activeDetailIndex]?.startDate ||  "",
         endDate:  activeInfo.details[activeDetailIndex]?.endDate ||  "",
         college: activeInfo.details[activeDetailIndex]?.college ||  "",
-        skill:  activeInfo.details[activeDetailIndex]?.skill ||  "",
+        skill:values.skill,
+        // skill:  activeInfo.details[activeDetailIndex]?.skill ||  "",
         language:  activeInfo.details[activeDetailIndex]?.language || "",
         marks:  activeInfo.details[activeDetailIndex]?.marks || "",
         companyName:  activeInfo.details[activeDetailIndex]?.companyName ||  "",

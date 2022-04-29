@@ -1,15 +1,12 @@
 import React, { useState } from "react"
 import "./register.css"
+import validator from 'validator'
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import logo from "../asset/logo.png";
 import InputControl from './InputControl';
+import M from 'materialize-css'
 
-/*
-function password_validate(p) {
-    return (/[A-Z]/.test(p) && /[0-9]/.test(p) && !/[aeiou]/.test(p) && /^[@#][A-Za-z0-9]{7,13}$/.test(p));
-}
-*/
 const Register = () => {
 
     const navigate = useNavigate();
@@ -29,9 +26,36 @@ const Register = () => {
         })
     }
 
+//     const emailValidation = () => {
+//         const regEx = /[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,8}(.[a-z{2,8}])?/g;
+//         if (regEx.test(email)) {
+//           setMessage("Email is Valid");
+//         } else if (!regEx.test(email) && email !== "") {
+//           setMessage("Email is Not Valid");
+//         } else {
+//           setMessage("");
+//         }
+//       };
+    
+//     const [emailError, setEmailError] = useState('')
+//     const validateEmail = (e) => {
+//       var email = e.target.value
+    
+//       if (validator.isEmail(email)) {
+//         setEmailError('Valid Email :)')
+//       } else {
+//         setEmailError('Enter valid Email!')
+//       }
+//   }
+
     const register = () =>{
         const { name, email, password, reEnterPassword } = user
-        if( name && email && password && (password === reEnterPassword )){
+        const regEx = /[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,8}(.[a-z{2,8}])?/g;
+        if (!regEx.test(email)) {
+            // M.toast({html: 'Email is InValid'})
+           alert("Email is InValid");
+        }
+        else if( name && email && password && (password === reEnterPassword )){
                 axios.post("http://localhost:9002/register", user)
                 .then( res => {
                  alert(res.data.message)
@@ -59,7 +83,7 @@ const Register = () => {
                 type ="text" 
                 name="email" 
                 label="Email"
-                value={user.email}  
+                value={user.email}    
                 placeholder="Enter your Email" 
                 onChange={ handleChange }>
            </InputControl>

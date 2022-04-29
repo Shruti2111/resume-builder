@@ -46,3 +46,9 @@
 .content-wrap{
   flex:1;
 }
+
+#toast-container{
+  top:50px !important;
+  right: 20px !important;
+  left: auto !important;
+}

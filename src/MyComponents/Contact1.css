@@ -1,0 +1,37 @@
+.label {
+    display: inline-block;
+    width: 110px;
+    color: hsl(0, 67%, 5%);
+    
+  }
+  
+  .textarea {
+    vertical-align: middle;
+  }
+  
+  .flex1 {
+    display: block;
+    font-size: 30px;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    width: max-content;
+  }
+  .Send {
+    display: block;
+    font-size: 30px;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    width: max-content;
+  }
+  .Msg{
+    text-align: center;
+    align-content: top;
+  }
+
+  .contactus{
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+  }

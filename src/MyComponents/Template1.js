@@ -1,5 +1,5 @@
 import React, { forwardRef, useRef, useState, useEffect } from "react";
-import User_Template1 from '../asset/User_Template1.png';
+import User_Template1 from '../asset/resumephoto5.jpg';
 import './Template1.css';
 
 const Template1 = forwardRef((props,ref) => {

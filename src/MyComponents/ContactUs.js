@@ -1,7 +1,10 @@
 import React  from 'react';
 import './ContactUs.css';
+import Newnavbar from './Newnavbar';
+import Footer from './Footer'
 import contactus_img from '../asset/contact-banner.jpg';
 import axios from "axios"
+import Contact1 from './Contact1';
 import { useNavigate } from "react-router-dom"
 
 function ContactUs(){
@@ -9,8 +12,10 @@ function ContactUs(){
   return( 
     // const element = (<div> </div>)
     <div>
+      
       <center>
       <img src={contactus_img} className='img_contact' alt="contact us" /></center>
+      <div className='main'>
   <div className="center">
       
         <center>  
@@ -32,11 +37,13 @@ function ContactUs(){
 
       <center>
         <p>
-          support@makemyresume.com
+          buildmyresume1001@gmail.com
         </p>
       </center>
-
-      
+     
+    </div>
+  
+    <Contact1 />
     </div>
     </div>)
   

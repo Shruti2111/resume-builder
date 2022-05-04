@@ -1,11 +1,35 @@
 import React,{useEffect, useState} from 'react';
 import InputControl from './InputControl';
 import axios from "axios";
+// import  generator from 'generate-password';
 import './Details.css';
 
+// function makeid() {
+//     var text = "";
+//     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  
+//     for (var i = 0; i < 5; i++)
+//       text += possible.charAt(Math.floor(Math.random() * possible.length));
+  
+//     return text;
+//   }
+  
 function Details(props){
+//     let file=document.getElementById('imgField').files[0]
+//     // console.log(file);
+  
+//     let reader=new FileReader()
+//     reader.readAsDataURL(file);
+  
+//     // console.log(reader.result);
+//   reader.onloadend = function() {
+//         document.getElementById("imgTemplate").src = reader.result};
+    
     const sections= props.sections;
     const information= props.information;
+    //  const [password, setPassword] = useState('');
+  const password="pass";
+
 
     const [activeSectionKey,setActiveSectionKey]=useState(Object.keys(sections)[0]);
     
@@ -19,7 +43,7 @@ function Details(props){
 
     const [activeDetailIndex,setActiveDetailIndex] = useState(0);
 
-    const [values,setValues]=useState({
+    const [values,setValues]=useState({       
         fname: activeInformation?.detail?.fname || "",
         lname: activeInformation?.detail?.lname || "",
         title: activeInformation?.detail?.title || "",
@@ -28,7 +52,7 @@ function Details(props){
         email: activeInformation?.detail?.email || "",
         phone:  activeInformation?.detail?.phone || "",
         address: activeInformation?.detail?.address || "",
-        file:[],
+         file:[] ,
     });
 
     const handlePointUpdate=(value,index)=>{
@@ -38,11 +62,10 @@ function Details(props){
         tempValues.points[index]=value;
         setValues(tempValues);
     };
-/*
-    const handleInputChange=()=>{
-
-    };
-*/
+    const fileSelectedHandler = (event )=>{
+        console.log(event.target.files[0]);
+        setValues({ file: event.target.files[0]})
+    }
     const basicInfoBody=(
         <div className="detail">
             <div className="row">
@@ -108,16 +131,17 @@ function Details(props){
                
             </div>
             <div className="row">
+          
                 <InputControl
                    label="Linkedin Link"
                    placeholder="Enter your linkedin profile link"
                    value={values.linkedin}
                    name="linkedin"
-                   onChange={(event)=>
+                   onChange={(event)=> 
                     setValues((prev) => ({...prev, linkedin: event.target.value}))
                  }
                 />
-                <InputControl
+               <InputControl
                    label="Github Link"
                    placeholder="Enter your github profile link"
                    value={values.github}
@@ -223,7 +247,7 @@ function Details(props){
         <div className="detail">
             <div className="row">
             <InputControl
-                   label="Title"
+                   label="Project Title"
                    placeholder="Enter Project Title"
                    value={values.title}
                    name="title"
@@ -407,7 +431,7 @@ function Details(props){
             <InputControl
                    label="Certificate Link"
                    placeholder="Attach certificate Link"
-                   value={values.certificatelink}
+                   value={values.certificateLink}
                    onChange={(event)=>
                     setValues((prev) => ({...prev, certificateLink: event.target.value}))
                  }
@@ -415,36 +439,53 @@ function Details(props){
             </div>
         </div>
     );
-    /*
-    let file=document.getElementById('imgField').files[0]
-    console.log(file);
-
-    let reader=new FileReader()
-    reader.readAsDataURL(file);
-
-    console.log(reader.result);
-
-    reader.onloadend = function() {
-        document.getElementById("imgTemplate").src = reader.result};
-*/
+    
+ 
     const otherBody=(
         <div className="detail">
             <div className="row">
             <InputControl
                    label="Select Image"
+                   id="imgField"
                    type="file"
-                   encType="multipart/form-data"
+                   name="upload_file"
+                
+                onChange={fileSelectedHandler}
+            />
+            {/* <InputControl
+                   label="Select Image"
+                   type="file"
+                //    encType="multipart/form-data"
                    id="imgField"
                    name="upload_file"
-                   value={values.file}
+                //    value={values.file}
                    onChange={(event)=>
                    setValues((prev) => ({...prev, file: event.target.files[0]}))
-                 }
-            />
+                // { const reader = new FileReader();
+                //     reader.onload = () =>{
+                //         if(reader.readyState === 2){
+                //             setValues((prev) =>( {...prev, file : reader.result}))
+                //         }  
+                //     }
+                //     reader.readAsDataURL(event.target.file[0])
+                // } 
+               
+                   }
+            
+            /> */}
             </div>
         </div>   
     );
 
+
+    // useEffect(() => {
+
+    // })
+
+    const linkregex = new RegExp('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?');
+    const regEx = /[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,8}(.[a-z{2,8}])?/g; 
+    const phnregex=/^\+(?:[0-9]●?){6,14}[0-9]$/;
+      
     const generateBody = ()=> {
         switch(sections[activeSectionKey]){
             case sections.basicInfo: return basicInfoBody;
@@ -467,6 +508,7 @@ function Details(props){
        {
            case sections.basicInfo: {
                const tempDetails={
+                   password,
                    fname: values.fname,
                    lname: values.lname,
                    linkedin:values.linkedin,
@@ -476,45 +518,51 @@ function Details(props){
                    title:values.title, 
                    address:values.address,
                };
-               axios.post("http://localhost:9002/details", tempDetails)
                
-            // fetch("/details",{
-            //     method:"post",
-            //     headers:{
-            //         "Content-Type":"application/json"
+            if (!regEx.test(values.email)&& values.email!=="") {
+               alert("Email is InValid");
+            }
+            else if(!phnregex.test(values.phone)&& values.phone!=="")
+            {
+                alert("Phone Number must contain 10 digits with +country code at starting. Eg: +9198XXXXXXXX")
+            }
+            else if (!linkregex.test(values.github) && values.github!=="") {
+               alert("Github Link is not Valid");
+            }
+            else  if (!linkregex.test(values.linkedin) && values.linkedin!=="") {
+                alert("Linkedin Link is not Valid");
+             }
+        else{
+            props.setInformation((prev) => ({
+                ...prev,
+                [sections.basicInfo]: {
+                    ...prev[sections.basicInfo],
+                    detail:tempDetails,
+                    sectionTitle,
+                }
+            }))
+
+            // fetch('http://localhost:9002/details', {
+            //     method: 'Post',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //         "Authorization":"Bearer "+localStorage.getItem("jwt")
             //     },
-            //     body:JSON.stringify({
-            //         fname,lname,linkedin,github,email,phone,title,address
-            //     })
-            // }).then(res=>res.json())
-            // .then(data=>{
-            //     if(data.error){
-            //         res.send(data.error)
-            //     }
-            //     else{
-            //         res.send(data.message)
-            //     }
+            //     body: JSON.stringify(tempDetails),
             // })
-        
-               props.setInformation((prev) => ({
-                   ...prev,
-                   [sections.basicInfo]: {
-                       ...prev[sections.basicInfo],
-                       detail:tempDetails,
-                       sectionTitle,
-                   }
-               }));
-      
-             
-            //   .then( res => {
-            //     alert(res.data.message)
-            //    })  
+            // .then(res => res.json())
+             axios.post("http://localhost:9002/infodetail", tempDetails)
+    
+              }
+       
                break;
 
            }
 
         case sections.education: {
             const tempDetails={
+                password,
+                email:values.email,
                 college: values.college,
                 classCollege: values.classCollege,
                 startDate:values.startDate,
@@ -524,20 +572,25 @@ function Details(props){
             const tempDetail = [...information[sections.education]?.details];
                tempDetail[activeDetailIndex]=tempDetails;
 
+         
+             if(values.endDate<values.startDate)
+             {alert("Start Date must be smaller than End Date")}
+             else{
+                axios.post("http://localhost:9002/edudetail", tempDetails)
+
                props.setInformation((prev) => ({
                 ...prev,
                 [sections.education]: {
                     ...prev[sections.education],details:tempDetail,
                     sectionTitle,
                 }
-            }));
-             axios.post("http://localhost:9002/details", tempDetails)
-          
+            }))}
             break;
         }
 
         case sections.workExp: {
             const tempDetails={
+                password,
                 title: values.title,
                 companyName: values.companyName,
                 certificateLink:values.certificateLink,
@@ -549,21 +602,28 @@ function Details(props){
             const tempDetail = [...information[sections.workExp]?.details];
                tempDetail[activeDetailIndex]=tempDetails;
 
-
+               if (!linkregex.test(values.certificateLink) && values.certificateLink!=="") {
+                alert("Certificate Link is not Valid");
+             }
+             else  if(values.endDate<values.startDate)
+             {alert("Start Date must be smaller than End Date")}
+             else{
+                axios.post("http://localhost:9002/workdetail",tempDetails)
                props.setInformation((prev) => ({
                 ...prev,
                 [sections.workExp]: {
                     ...prev[sections.workExp],details:tempDetail,
                     sectionTitle,
                 }
-            }));
-             axios.post("http://localhost:9002/details",tempDetails)
+            }))}
+            
           
             break;
         }
 
         case sections.skills: {
             const tempDetails={
+                sectionTitle:values.sectionTitle,
                 skill: values.skill,
             };
             const tempDetail = [...information[sections.skills]?.details];
@@ -576,7 +636,7 @@ function Details(props){
                     sectionTitle,
                 }
             }));
-            axios.post("http://localhost:9002/details",tempDetails)
+            axios.post("http://localhost:9002/skilldetail",tempDetail[activeDetailIndex])
        
             break;
         }
@@ -592,15 +652,22 @@ function Details(props){
             const tempDetail = [...information[sections.project]?.details];
                tempDetail[activeDetailIndex]=tempDetails;
 
-
+               if (!linkregex.test(values.link) && values.link!=="") {
+                alert("Deployed Link is not Valid");
+             }
+               else if (!linkregex.test(values.github) && values.github!=="") {
+                alert("Github Link is not Valid");
+             }
+             else{
+                axios.post("http://localhost:9002/prodetail",tempDetails)
                props.setInformation((prev) => ({
                 ...prev,
                 [sections.project]: {
                     ...prev[sections.project],details:tempDetail,
                     sectionTitle,
                 }
-            }));
-            axios.post("http://localhost:9002/details",tempDetails)
+            }))}
+          
           
             break;
         }
@@ -615,7 +682,7 @@ function Details(props){
                     sectionTitle,
                 }
             }));
-            axios.post("http://localhost:9002/details",tempPoints)
+            axios.post("http://localhost:9002/achievedetail",tempPoints)
           
             break;
         }
@@ -628,7 +695,9 @@ function Details(props){
             const tempDetail = [...information[sections.certificate]?.details];
                tempDetail[activeDetailIndex]=tempDetails;
 
-
+               if (!linkregex.test(values.certificateLink) && values.certificateLink!=="") {
+                alert("Deployed Link is not Valid");
+               }else{
                props.setInformation((prev) => ({
                 ...prev,
                 [sections.certificate]: {
@@ -636,8 +705,8 @@ function Details(props){
                     sectionTitle,
                 }
             }));
-            axios.post("http://localhost:9002/details",tempDetails)
-         
+            axios.post("http://localhost:9002/certidetail",tempDetails)
+        }    
             break;
         }
 
@@ -656,15 +725,29 @@ function Details(props){
                     sectionTitle,
                 }
             }));
-            axios.post("http://localhost:9002/details",tempDetails)
+            axios.post("http://localhost:9002/langdetail",tempDetails)
           
             break;
         }
 
         case sections.other: {
             const tempDetails={
+            email:values.email,
               file:values.file
             };
+    //         var reader = new FileReader();
+    // if (values.file && values.file.type.match('image.*')) {
+    //   var url=reader.readAsDataURL(values.file);
+    //   console.log(url)
+    // } else 
+    //         {console.log("no")}
+            console.log(values.file.name)
+            const formdata = new FormData();
+            formdata.append('image', values.file, values.file.name);
+             axios.post("http://localhost:9002/infodetail",formdata)
+             .then(res =>{
+                 console.log(res);
+             })
             
             props.setInformation((prev) => ({
                 ...prev,
@@ -685,6 +768,7 @@ function Details(props){
             })*/
             break;
         }
+        default:break;
        } 
        
        /*
@@ -738,15 +822,15 @@ function Details(props){
         setActiveDetailIndex((prev => (prev===index ? 0: prev-1)));
     };
 
-    useEffect(() => {
-        fetch('/alldetail',{
-            headers:{"Authorization": "Bearer "+localStorage.getItem("jwt")
-        }
-        }).then(res =>res.json())
-        .then(result =>{
-            setValues(result)
-        })
-    })
+    // useEffect(() => {
+    //     fetch('/alldetail',{
+    //         headers:{"Authorization": "Bearer "+localStorage.getItem("jwt")
+    //     }
+    //     }).then(res =>res.json())
+    //     .then(result =>{
+    //         setValues(result)
+    //     })
+    // })
    
     useEffect(()=>{
         const activeInfo = information[sections[activeSectionKey]];
@@ -784,6 +868,7 @@ function Details(props){
         marks: activeInfo?.details ? activeInfo.details[0]?.marks || "" : "",
         companyName: activeInfo?.details ? activeInfo.details[0]?.companyName || "" : "",
         location: activeInfo?.details ? activeInfo.details[0]?.location || "" : "",
+        // file: activeInfo?.detail?.file || "",
         });
     },[activeSectionKey]);
 
@@ -810,8 +895,8 @@ function Details(props){
         startDate:  activeInfo.details[activeDetailIndex]?.startDate ||  "",
         endDate:  activeInfo.details[activeDetailIndex]?.endDate ||  "",
         college: activeInfo.details[activeDetailIndex]?.college ||  "",
-        skill:values.skill,
-        // skill:  activeInfo.details[activeDetailIndex]?.skill ||  "",
+        // skill:values.skill,
+        skill:  activeInfo.details[activeDetailIndex]?.skill ||  "",
         language:  activeInfo.details[activeDetailIndex]?.language || "",
         marks:  activeInfo.details[activeDetailIndex]?.marks || "",
         companyName:  activeInfo.details[activeDetailIndex]?.companyName ||  "",
@@ -833,7 +918,7 @@ function Details(props){
         <div className="body">
             <div className='row'>
         <InputControl 
-            label="Title" 
+            label="Field Title" 
             placeholder="Enter section Title"
             value={sectionTitle}
             name="sectionTitle"

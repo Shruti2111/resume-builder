@@ -15,15 +15,15 @@ function ContactUs(){
       
       <center>
       <img src={contactus_img} className='img_contact' alt="contact us" /></center>
-      <div className='main'>
+      
   <div className="center">
       
         <center>  
-        <h1 className="App-title">CONTACT US</h1>
+        <h1 className="App-title" style={{ color: "#001D6E" }}>CONTACT US</h1>
         </center>
 
       <center>
-        <p>
+        <p style={{ color: "#632626" }}>
           Proudly made in India!!!
          Make my resume is best way to create your resume online. If you have ever tried creating your resume with word editors, you know how painful it is to design an even simple resume. We are here to solve exactly that.
         </p>
@@ -40,12 +40,12 @@ function ContactUs(){
           buildmyresume1001@gmail.com
         </p>
       </center>
-     
-    </div>
+     </div>
+  
   
     <Contact1 />
     </div>
-    </div>)
+    )
   
 }
 

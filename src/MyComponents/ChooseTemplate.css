@@ -1,15 +1,12 @@
-/* .contain{ */
-    /* background-image: url('C:\Users\Manoj Goyal\resume-builder\src\asset\S2.jpg');  */
-/* } */
 .card:hover{
     box-shadow: 0 2px 20px gray;
 }
 
-.heading{
+.heading7{
     font-size: 50px;
     padding: 20px;
     text-align: center;
-    /* color: #fff; */
+    font-family: 'Lobster', cursive;
 }
 .wrapper{
     display: grid;

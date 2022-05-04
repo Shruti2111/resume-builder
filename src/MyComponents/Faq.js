@@ -50,8 +50,8 @@ export default function Faq(){
   return(
 
 <div class="FAQ_list_container">
-        <div class="FAQ__heading">Frequently Asked Questions
-
+        <div class=" abcd">Frequently Asked Questions </div>
+        <div class="FAQ__heading ">
         {
           data.map((item,i) => {
             return(

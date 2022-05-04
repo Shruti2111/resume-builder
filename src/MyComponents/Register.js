@@ -48,12 +48,22 @@ const Register = () => {
 //       }
 //   }
 
+    // var isNameEmpty=false;
     const register = () =>{
         const { name, email, password, reEnterPassword } = user
         const regEx = /[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,8}(.[a-z{2,8}])?/g;
+        const passregex=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,20}$/;
         if (!regEx.test(email)) {
             // M.toast({html: 'Email is InValid'})
            alert("Email is InValid");
+        }
+        else if(name.trim().length==0){
+            // isNameEmpty=true;
+            alert("please enter username!")
+        }
+        else if(!passregex.test(password))
+        {
+            alert("Password must be Minimum eight characters, at least one uppercase letter, one lowercase letter and one number!");
         }
         else if( name && email && password && (password === reEnterPassword )){
                 axios.post("http://localhost:9002/register", user)
@@ -79,6 +89,7 @@ const Register = () => {
                 placeholder="Enter your Name" 
                 onChange={ handleChange }>
             </InputControl>
+            
             <InputControl
                 type ="text" 
                 name="email" 

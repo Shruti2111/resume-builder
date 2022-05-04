@@ -4,17 +4,15 @@ import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import logo from "../asset/logo.png";
 
-const Login = ( { setLoginUser } ) => {
+const Reset = ( { setLoginUser } ) => {
 
     let navigate = useNavigate();
 
     const [user,setUser] = useState({        
         email:"",
-        password:""
     })
 
-    const handleChange = e => {
-        
+    const handleChange = e => {        
         const {name , value} = e.target
         setUser({
             ...user,
@@ -46,33 +44,32 @@ const Login = ( { setLoginUser } ) => {
     // else {
     //             alert("Fill all the fields to login.")
     //         }
-    const login = () =>{
-        const {email, password} = user
-        if(  email && password){
-            axios.post("http://localhost:9002/login", user)
+    const reset = () =>{
+        const {email} = user
+        if(  email ){
+            axios.post("http://localhost:9002/reset-password", user)
             .then(res => {
                 alert(res.data.message)
                setLoginUser(res.data.user)
-                navigate("/")
+                navigate("/login")
             })
         } else {
-            alert("Fill all the fields to login.")
+            alert("Enter email to reset password.")
         }
      }
 
     return (
         <div className="login">
              <img className="logo1" src={logo} alt="logo"/>
-            <h1>Login</h1>
+            <h1>Reset Password</h1>
             <label>Email</label>
             <input type ="text" name="email" value={user.email} onChange={handleChange} placeholder="Enter your Email"></input>
-            <label>Password</label>
-            <input type ="password" name="password" value={user.password} onChange={handleChange} placeholder="Enter your Password"></input>
-            <div className="button" onClick={login}>Login</div>
+            
+            <div className="button" onClick={reset}>reset password</div>
             <div>or</div>
             <div className="button" onClick={ () => navigate("/register")}>Register</div>
         </div>
     )
 }
 
-export default Login
+export default Reset

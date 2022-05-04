@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom"
 function ChooseTemplate(){
     return(
       <div className='contain'>
-<div className='heading'>
+<div className='heading7' style={{color:"#1572A1"}}>
   Choose Template
 </div>
       <div className='wrapper'>
@@ -30,7 +30,7 @@ function ChooseTemplate(){
               src={img3}
               c_id="temp3"
               alt= "template3"
-              title="Popup"
+              title="Modern"
               description="Template 3"/>
       </div>
       </div>

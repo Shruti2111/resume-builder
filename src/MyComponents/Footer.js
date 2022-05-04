@@ -28,7 +28,7 @@ function Footer() {
             <div className="col">
               <h5><a class="nav-link active footer-link" aria-current="page" href="http://localhost:3000/header">Home</a></h5>
               <ui className="list-unstyled">
-                <li><a class="nav-link footer-link" href="http://localhost:3000/createresume">Create Resume</a></li>
+                {/* <li><a class="nav-link footer-link" href="http://localhost:3000/createresume">Create Resume</a></li> */}
                 <li><a class="nav-link footer-link" href="http://localhost:3000/choosetemplate">Choose Template</a></li>
                 <li><a class="nav-link footer-link" href="http://localhost:3000/resumeexamples">Resume Examples</a></li>
               </ui>

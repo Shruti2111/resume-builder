@@ -3,7 +3,7 @@ import Typical from 'react-typical';
 import './Header.css';
 import ChooseTemplate from './ChooseTemplate';
 import axios from "axios"
-import { useNavigate } from "react-router-dom"
+import { useNavigate ,useLocation} from "react-router-dom"
 import Faq from './Faq';
 import ResumeExamplesHome from './ResumeExamplesHome';
 
@@ -11,7 +11,7 @@ import ResumeExamplesHome from './ResumeExamplesHome';
 export default function Header(){
 
     let navigate = useNavigate();
-
+    let location = useLocation();
     return (
         <div div className='full'>
         <div className='resume-container'>
@@ -37,7 +37,7 @@ export default function Header(){
                 <div className='resume-details-name'>
                     <span className='primary-text'>
                         {" "}
-                        Welcome to<span className='highlighted-text'> Online Resume Builder</span>
+                        Welcome to<span className='highlighted-text'> Build My Resume</span>
                     </span>
                 </div>
 

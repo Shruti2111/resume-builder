@@ -91,7 +91,14 @@ function CreateResume(){
         <div >
           
           <div className='content'>
-              <p>Fill in details to download Resume</p>
+              <ul><li>Fill in details to download Resume</li>
+              <li>In case you don't want to add any specific section then you can just leave its title blank and you are sorted</li>
+                  
+                 <li>
+                 In case you want to change any section title then you can also do that in a very simple way 
+                 </li>
+              
+              </ul>
           <ReactToPrint
           trigger={() => {
             

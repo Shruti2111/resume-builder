@@ -20,16 +20,10 @@ p{
 }
 
 .temp2_img{
-    border-radius: 50%;
-    padding:10px;
-    display: block;
-    /* position: absolute; */
-    margin-left: auto;
-    margin-right: auto;
-      /* max-width:100% ; */
-    width: 250px;
-    height: auto;
-    /* margin: auto; */
+  padding:10px;  
+    border-radius:50% 50% 50% 50%;
+    height:260px; 
+    width:280px;
     
   }
   
@@ -38,6 +32,9 @@ p{
   flex-direction: column;
     /* background-color: #F48FB1; */
     padding: 10px;
+}
+.temp3heading {
+  font-family: 'Cairo', sans-serif;
 }
 
 .header2 .heading1{
@@ -180,9 +177,7 @@ p{
   padding-left: 10px;
 }
 
-.certificate .content1 .item .link{
-  /* color: #fff; */
-}
+
  .content1 .item .overview{
   margin-bottom: 0%;
 }

@@ -11,8 +11,8 @@ const ResumeExamplesHome = () => {
     return (
       <React.Fragment>
   
-    <div class="examples-heading">Resume Examples</div>
-    <p class="examples-text">Use professionally written and formatted resume samples that will get you the job you want.</p>
+    <div class="examples-heading" style={{color:"#865858"}}>Resume Examples</div>
+    <p class="examples-text" style={{color:"#276678"}}>Use professionally written and formatted resume samples that will get you the job you want.</p>
    <div id="carouselExampleControls" className="carousel slide" data-bs-ride="carousel">
    
   <div className="carousel-inner">   

@@ -18,9 +18,10 @@ p{
 margin-bottom: 0%;
 }
 .temp1_img {
-  border-radius: 50%;
-  padding:10px;
-  width:fit-content;
+  padding:10px;  
+  border-radius:50% 50% 50% 50%;
+  height:260px; 
+  width:280px;
   
 }
 
@@ -122,6 +123,11 @@ color: #fff;
 color: #404040;
 }
 
+.col22 .content .subTitle2{
+
+  color: #404040;
+}
+
 .section .content{
   display: flex;
   flex-direction: column;
@@ -190,7 +196,8 @@ color: #fff;
   line-height: 1.3rem;
   text-transform: capitalize;
   margin-bottom: 0%;
-  padding-left: 0rem;
+  padding-left: 30px;
+  margin-left: 20px;
 }
 .col22 .section .content .item{
   padding-left: 0.7rem;
@@ -200,17 +207,15 @@ color: #fff;
   color: #fff;
   font-size: 1rem;
   margin-bottom: 0%;
+  margin-left: 20px;
   margin-top: 0%;
   text-transform: capitalize;
   line-height: 1.3rem;
 }
-.col22 .content .subTitle2{
-
-  color: #404040;
-}
 
 .content .overview {
   font-size: 0.875rem;
+  margin-left: 20px;
 }
 
 .content .link2 {
@@ -233,6 +238,7 @@ color: #fff;
   gap: 5px;
   align-items: center;
   font-size: 0.875rem;
+  margin-left: 20px;
 }
 
 .content .date svg {

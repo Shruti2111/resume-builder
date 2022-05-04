@@ -246,7 +246,7 @@ const Template3 = forwardRef((props,ref) => {
             
             {
               info.basicInfo?.detail?.title && 
-              <div className="subHeading1">{info.basicInfo?.detail?.title}</div>
+              <div className="subHeading1 temp3heading">{info.basicInfo?.detail?.title}</div>
             }
          
           </div>

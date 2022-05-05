@@ -18,14 +18,14 @@
 p{
   margin-bottom: 0%;
 }
-
+/* 
 .temp2_img{
   padding:10px;  
     border-radius:50% 50% 50% 50%;
     height:260px; 
     width:280px;
     
-  }
+  } */
   
 .header2{
   display: flex;
@@ -112,7 +112,8 @@ p{
     float: right;
     flex: 1.2;
     flex-direction: column;
-    /* gap: 10px; */
+    gap: 10px;
+    padding-top: 20px;
 }
 
 .section .sectionTitle{

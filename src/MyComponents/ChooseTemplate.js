@@ -1,9 +1,9 @@
 import React from 'react';
 // import {Card, Row, Col} from 'react-bootstrap';
 import './ChooseTemplate.css';
-import img1 from '../asset/temp1.png';
-import img2 from '../asset/resumepic.jpeg';
-import img3 from '../asset/temp3.png';
+import img2 from '../asset/image1.jpeg';
+import img1 from '../asset/image2.jpeg';
+import img3 from '../asset/image3.png';
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 

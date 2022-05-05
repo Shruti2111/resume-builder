@@ -22,7 +22,7 @@ function CreateResume(){
         achievements: "Achievements",
         certificate:"Certificates",
         lang: "Languages Known",
-        other: "Other",
+        // other: "Other",
        }
 
        const resumeRef=useRef()
@@ -68,11 +68,11 @@ function CreateResume(){
             sectionTitle: sections.lang,
             details: []
         },
-        [sections.other]: {
-            id: sections.other,
-            sectionTitle: sections.other,
-            detail: {}
-        },
+        // [sections.other]: {
+        //     id: sections.other,
+        //     sectionTitle: sections.other,
+        //     detail: {}
+        // },
 
     });
 

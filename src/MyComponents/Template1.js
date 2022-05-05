@@ -1,16 +1,11 @@
 import React, { forwardRef, useRef, useState, useEffect } from "react";
-import User_Template1 from '../asset/resumephoto5.jpg';
+import resumephoto3 from '../asset/resumephoto3.jpg';
 import './Template1.css';
 
 const Template1 = forwardRef((props,ref) => {
   const information=props.information;
   const sections=props.sections;
-  
-  const [image,setImage] = useState({
-    profileImg:'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'
-  })
-  
-  
+
   const [column, setColumn] = useState([[], []]);
 
   const info ={
@@ -22,12 +17,9 @@ const Template1 = forwardRef((props,ref) => {
     lang: information[sections.lang],
     certificate: information[sections.certificate],
     achievements: information[sections.achievements],
-    other: information[sections.other],
+    // other:information[sections.other],
   };
 
-  //  const reader = new FileReader();
-  // const filename= reader.readAsDataURL(info.other?.detail?.file)
-// console.log(filename);
   const getFormattedDate = (value)=>{
     if(!value)
       return "";
@@ -177,8 +169,8 @@ const Template1 = forwardRef((props,ref) => {
       <div className="item">
         {
           item.language && 
-        <ul className="point">
-          <li className="point1">{item.language}</li>
+        <ul className="points">
+          <li className="point">{item.language}</li>
         </ul>
         }
       </div>
@@ -218,61 +210,39 @@ const Template1 = forwardRef((props,ref) => {
     </ul>
     )}
     </div>
-  </div>,
-
-  // [sections.other]:
-  // <div key={'other'} >
-  //       <img src={image.profileImg}  className="temp1_img" id="imgTemplate"/>
-  // </div>
+  </div>
   };
-   
- 
+  
   useEffect(() => {
     setColumn([
       [
-        sections.other,
+        
         sections.skills,
         sections.lang,
         sections.achievements,
         sections.certificate,
       ], [
+        
+       
         sections.education,
         sections.workExp,
         sections.project,
-      
+       
       ]
     ])
-    
   });
-
-  //  useEffect(() => {
-
-  // const objectUrl = URL.createObjectURL(info.other?.detail?.file.name)
-  //       setImage({ profileImg:objectUrl})
-  //       console.log(objectUrl);
-  // },[info.other?.detail?.file.name])
-
-  const readfileimg =() =>{
-    let reader=new FileReader()
-    reader.readAsDataURL(info.other?.detail?.file);
-  
-     console.log(reader.result);
-     reader.onloadend = function() {
-        document.getElementById("imgTemplate").src = reader.result};
-    //  setImage({profileImg: URL.createObjectURL(info.other?.detail?.file.name)})
-    
-  }
-   
-
 
   return (
     <div ref={ref}>
     <div  className="container">
       <div className="main1">
         <div className="col1">
-      {/* <div>{info.other?.detail?.file.name}</div> */}
-         { readfileimg}
-          <img src={image.profileImg} id="imgTemplate" alt="user" className="temp1_img" />
+          {/* <img src={resumephoto3} alt="user" className="temp1_img" id="imgTemplate"/>  
+          <div>
+            {
+              info.other?.detail?.file.name
+            }
+          </div> */}
           <div className="links1">
             {
              info.basicInfo?.detail?.email && 

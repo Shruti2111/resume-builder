@@ -52,7 +52,7 @@ function Details(props){
         email: activeInformation?.detail?.email || "",
         phone:  activeInformation?.detail?.phone || "",
         address: activeInformation?.detail?.address || "",
-         file:[] ,
+        //  file:[] ,
     });
 
     const handlePointUpdate=(value,index)=>{
@@ -441,17 +441,17 @@ function Details(props){
     );
     
  
-    const otherBody=(
-        <div className="detail">
-            <div className="row">
-            <InputControl
-                   label="Select Image"
-                   id="imgField"
-                   type="file"
-                   name="upload_file"
+    // const otherBody=(
+    //     <div className="detail">
+    //         <div className="row">
+    //         <InputControl
+    //                label="Select Image"
+    //                id="imgField"
+    //                type="file"
+    //                name="upload_file"
                 
-                onChange={fileSelectedHandler}
-            />
+    //             onChange={fileSelectedHandler}
+    //         />
             {/* <InputControl
                    label="Select Image"
                    type="file"
@@ -473,9 +473,9 @@ function Details(props){
                    }
             
             /> */}
-            </div>
-        </div>   
-    );
+    //         </div>
+    //     </div>   
+    // );
 
 
     // useEffect(() => {
@@ -496,7 +496,7 @@ function Details(props){
             case sections.skills: return skillBody;
             case sections.lang: return langBody;
             case sections.certificate: return certificateBody;
-            case sections.other: return otherBody;
+            // case sections.other: return otherBody;
             default: 
                  return null;
         }
@@ -730,33 +730,33 @@ function Details(props){
             break;
         }
 
-        case sections.other: {
-            const tempDetails={
-            email:values.email,
-              file:values.file
-            };
+        // case sections.other: {
+        //     const tempDetails={
+        //     email:values.email,
+        //       file:values.file
+        //     };
     //         var reader = new FileReader();
     // if (values.file && values.file.type.match('image.*')) {
     //   var url=reader.readAsDataURL(values.file);
     //   console.log(url)
     // } else 
     //         {console.log("no")}
-            console.log(values.file.name)
-            const formdata = new FormData();
-            formdata.append('image', values.file, values.file.name);
-             axios.post("http://localhost:9002/infodetail",formdata)
-             .then(res =>{
-                 console.log(res);
-             })
+            // console.log(values.file.name)
+            // const formdata = new FormData();
+            // formdata.append('image', values.file, values.file.name);
+            //  axios.post("http://localhost:9002/infodetail",formdata)
+            //  .then(res =>{
+            //      console.log(res);
+            //  })
             
-            props.setInformation((prev) => ({
-                ...prev,
-                [sections.other]: {
-                    ...prev[sections.other],
-                    detail:tempDetails,
-                    sectionTitle,
-                }
-            }));
+            // props.setInformation((prev) => ({
+            //     ...prev,
+            //     [sections.other]: {
+            //         ...prev[sections.other],
+            //         detail:tempDetails,
+            //         sectionTitle,
+            //     }
+            // }));
            
         /*    const formdata = new FormData();
             formdata.append('avatar', values.file);
@@ -766,8 +766,8 @@ function Details(props){
             .then(res => {
                 console.warn(res);
             })*/
-            break;
-        }
+    //         break;
+    //     }
         default:break;
        } 
        

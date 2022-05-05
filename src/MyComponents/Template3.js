@@ -283,7 +283,7 @@ const Template3 = forwardRef((props,ref) => {
         </div>
 
         <div className="coll2">
-        <img src={User_Template1} alt="user" className="temp2_img" />
+        {/* <img src={User_Template1} alt="user" className="temp2_img" /> */}
       
           {column[1].map((item) =>sectionDiv[item])}
         </div>
